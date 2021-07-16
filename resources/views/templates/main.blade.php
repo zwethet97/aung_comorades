@@ -28,7 +28,7 @@
                         <a class="nav-link" href="#">Home</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#">Users</a>
+                        <a class="nav-link" href="{{ route('admin.users.index')}}">Users</a>
                       </li>
                     </ul>
                     <div class="form-inline my-2 my-lg-0">
@@ -36,6 +36,10 @@
                         <div>
                             @auth
                                 <a href="{{ url('/home') }}">Home</a>
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('form-logout').submit();">Log Out</a>
+                                <form id="form-logout" method="POST" action="{{ route('logout') }}" style="display:none;">
+                                    @csrf
+                                </form>
                             @else
                                 <a href="{{ route('login') }}">Log in</a>
 
